@@ -22,7 +22,7 @@ class CompletedTaskTile extends StatelessWidget {
           completedTaskTitle,
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 20,
+            fontSize: 14,
           ),
         ),
         trailing: Checkbox(

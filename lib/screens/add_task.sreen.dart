@@ -12,9 +12,10 @@ class AddTaskScreen extends StatelessWidget {
     String newTaskTitle = '';
     String newTaskDescription = '';
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Container(
+    // ignore: no_leading_underscores_for_local_identifiers
+
+    return Scaffold(
+      body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -22,70 +23,63 @@ class AddTaskScreen extends StatelessWidget {
               Color.fromARGB(59, 33, 149, 243)
             ],
           ),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
-          ),
         ),
         width: pageWidth,
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const SizedBox(height: 15),
-            const Text(
-              'Add Task',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: TextField(
-                autofocus: true,
-                decoration: inputDecoration,
-                style: const TextStyle(color: Colors.white),
-                onChanged: (inputTask) {
-                  newTaskTitle = inputTask;
-                },
+        child: Form(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const SizedBox(height: 15),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: TextFormField(
+                  autofocus: true,
+                  decoration: inputDecoration,
+                  style: const TextStyle(color: Colors.white),
+                  onChanged: (inputTask) {
+                    newTaskTitle = inputTask;
+                  },
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: TextFormField(
-                autofocus: true,
-                style: const TextStyle(color: Colors.white),
-                decoration: inputDecorationDescription,
-                onChanged: (inputTask) {
-                  newTaskDescription = inputTask;
-                },
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: TextFormField(
+                  style: const TextStyle(color: Colors.white),
+                  decoration: inputDecorationDescription,
+                  onChanged: (inputTask) {
+                    newTaskDescription = inputTask;
+                  },
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            OutlinedButton(
-              onPressed: () {
-                Provider.of<TaskData>(context, listen: false)
-                    .addTask(newTaskTitle, newTaskDescription, false);
+              const SizedBox(height: 20),
+              OutlinedButton(
+                onPressed: () {
+                  Provider.of<TaskData>(context, listen: false)
+                      .addTask(newTaskTitle, newTaskDescription, false);
 
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Task Added")),
-                );
-              },
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(
-                  const Color.fromARGB(244, 139, 187, 241),
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Task Added")),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(
+                    const Color.fromARGB(244, 139, 187, 241),
+                  ),
+                ),
+                child: const Text(
+                  'Add',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              child: const Text(
-                'Add',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-          ],
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

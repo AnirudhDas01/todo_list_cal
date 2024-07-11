@@ -46,7 +46,7 @@ class IncompleteTaskTile extends StatelessWidget {
             ],
           ),
           trailing: Checkbox(
-            activeColor: Colors.green,
+            activeColor: const Color.fromARGB(185, 114, 225, 118),
             onChanged: onChanged,
             value: isDone,
           ),

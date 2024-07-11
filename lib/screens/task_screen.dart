@@ -22,7 +22,10 @@ class TaskScreen extends StatelessWidget {
               Provider.of<TaskData>(context, listen: false)
                   .clearCompletedTasks();
             },
-            child: const Icon(Icons.delete),
+            child: const Icon(
+              Icons.delete,
+              color: Color.fromARGB(180, 243, 72, 72),
+            ),
           ),
         ],
         flexibleSpace: Container(
@@ -79,8 +82,12 @@ class TaskScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          showModalBottomSheet(
-              context: context, builder: (context) => const AddTaskScreen());
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddTaskScreen(),
+            ),
+          );
         },
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
