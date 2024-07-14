@@ -12,14 +12,22 @@ class AddTaskScreen extends StatelessWidget {
     String newTaskTitle = '';
     String newTaskDescription = '';
 
-    // ignore: no_leading_underscores_for_local_identifiers
+    bool validateInputs(String title, String description) {
+      return title.isEmpty && description.isEmpty;
+    }
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Add Task Screen'),
+        backgroundColor: Colors.deepPurpleAccent,
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
             colors: [
-              Color.fromARGB(101, 104, 58, 183),
+              Color.fromARGB(59, 104, 58, 183),
               Color.fromARGB(59, 33, 149, 243)
             ],
           ),
@@ -30,7 +38,6 @@ class AddTaskScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const SizedBox(height: 15),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -43,7 +50,7 @@ class AddTaskScreen extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextFormField(
@@ -54,20 +61,31 @@ class AddTaskScreen extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               OutlinedButton(
                 onPressed: () {
+                  if (validateInputs(newTaskTitle, newTaskDescription)) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Title or descrption is Empty"),
+                      ),
+                    );
+                    return;
+                  }
+
                   Provider.of<TaskData>(context, listen: false)
                       .addTask(newTaskTitle, newTaskDescription, false);
 
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Task Added")),
+                    const SnackBar(
+                      content: Text("Task Added"),
+                    ),
                   );
                 },
                 style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(
-                    const Color.fromARGB(244, 139, 187, 241),
+                    Colors.deepPurpleAccent,
                   ),
                 ),
                 child: const Text(

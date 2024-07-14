@@ -20,10 +20,10 @@ class _CalenderScreenState extends State<CalenderScreen> {
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10),
-            ),
+            // borderRadius: BorderRadius.only(
+            //   bottomLeft: Radius.circular(10),
+            //   bottomRight: Radius.circular(10),
+            // ),
             gradient: LinearGradient(
               colors: [
                 Color.fromRGBO(118, 7, 162, 0.522),

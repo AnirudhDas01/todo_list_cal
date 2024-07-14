@@ -16,7 +16,7 @@ class CompletedTaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromARGB(255, 85, 33, 140),
+      color: const Color(0xFF03C988),
       child: ListTile(
         title: Text(
           completedTaskTitle,

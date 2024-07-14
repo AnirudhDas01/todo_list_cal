@@ -54,31 +54,40 @@ class TaskScreen extends StatelessWidget {
           style: const TextStyle(fontSize: 18),
         ),
       ),
-      body: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(9),
-              child: const Center(
-                child: Column(
-                  children: [
-                    Text(
-                      'Incomplete Task',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
-                    ),
-                    Expanded(child: IncompleteTaskList()),
-                    Text(
-                      'Complete Task',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
-                    ),
-                    Expanded(child: CompletedTaskList())
-                  ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(50, 255, 32, 77),
+              Color.fromARGB(50, 3, 201, 135),
+            ],
+          ),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(9),
+                child: const Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Incomplete Task',
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                      Expanded(child: IncompleteTaskList()),
+                      Text(
+                        'Complete Task',
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                      Expanded(child: CompletedTaskList())
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {

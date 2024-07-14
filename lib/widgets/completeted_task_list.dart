@@ -13,7 +13,7 @@ class CompletedTaskList extends StatelessWidget {
     return Consumer<TaskData>(
       builder: (context, taskData, child) {
         return Card(
-          color: const Color.fromARGB(182, 85, 33, 140),
+          color: const Color.fromARGB(193, 3, 201, 135),
           child: ListView.builder(
             itemBuilder: (context, index) {
               return CompletedTaskTile(

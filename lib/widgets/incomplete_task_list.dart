@@ -10,7 +10,7 @@ class IncompleteTaskList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<TaskData>(builder: (context, taskData, child) {
       return Card(
-        color: const Color.fromARGB(161, 56, 91, 194),
+        color: const Color.fromARGB(193, 255, 32, 77),
         child: ListView.builder(
           itemBuilder: (context, index) {
             return IncompleteTaskTile(
