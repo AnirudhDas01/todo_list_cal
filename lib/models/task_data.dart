@@ -16,6 +16,11 @@ class TaskData extends ChangeNotifier {
 
   List<CompletedTask> get completedTask => _completedTask;
 
+  void editTask(Task task, String newTitle, String newDescription) {
+    task.title = newTitle;
+    task.description = newDescription;
+  }
+
   void clearCompletedTasks() {
     _completedTask.clear();
 
@@ -60,8 +65,6 @@ class TaskData extends ChangeNotifier {
     );
     notifyListeners();
   }
-
-
 
   void updateTask(Task task) {
     task.toggetDone();
