@@ -18,10 +18,10 @@ class IncompleteTaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      color: Colors.red,
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-        child: ExpansionTile(
+        child: ListTile(
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -40,11 +40,13 @@ class IncompleteTaskTile extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TaskDetailScreen(
-                              taskTitle: taskTitle,
-                              taskDescription: taskDescription)));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TaskDetailScreen(
+                          taskTitle: taskTitle,
+                          taskDescription: taskDescription),
+                    ),
+                  );
                 },
                 child: Text(
                   taskTitle,
@@ -61,14 +63,6 @@ class IncompleteTaskTile extends StatelessWidget {
             onChanged: onChanged,
             value: isDone,
           ),
-          children: [
-            ListTile(
-              title: Text(
-                taskDescription,
-                style: const TextStyle(fontSize: 12, color: Colors.white),
-              ),
-            )
-          ],
         ),
       ),
     );

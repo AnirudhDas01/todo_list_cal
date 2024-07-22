@@ -10,6 +10,39 @@ class CompletedTaskList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void alertBox(TaskData taskData, int index) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text(
+            'Are you sure.?',
+            style: TextStyle(color: Colors.white),
+          ),
+          content: const Text(
+            'Do you want to send Completed Task back to Incomplete Task.?',
+            style: TextStyle(color: Colors.white),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                taskData.updateCompletedTask(taskData.completedTask[index]);
+                taskData.moveUncheckedTaskTOIncomplete(
+                    taskData.completedTask[index]);
+                Navigator.pop(context);
+              },
+              child: const Text('Ok'),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Consumer<TaskData>(
       builder: (context, taskData, child) {
         return Card(
@@ -22,9 +55,9 @@ class CompletedTaskList extends StatelessWidget {
                     taskData.completedTask[index].description,
                 isDone: taskData.completedTask[index].isDone,
                 onChanged: (value) {
-                  taskData.updateCompletedTask(taskData.completedTask[index]);
-                  taskData.moveUncheckedTaskTOIncomplete(
-                      taskData.completedTask[index]);
+                  if (value == false) {
+                    alertBox(taskData, index);
+                  }
                 },
               );
             },
