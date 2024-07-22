@@ -13,61 +13,62 @@ class AddTaskScreen extends StatelessWidget {
     String newTaskDescription = '';
 
     bool validateInputs(String title, String description) {
-      return title.isEmpty && description.isEmpty;
+      return title.isEmpty || description.isEmpty;
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Task Screen'),
+        title: const Text('Add Task'),
         backgroundColor: Colors.deepPurpleAccent,
       ),
       body: Container(
+        width: pageWidth,
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
               Color.fromARGB(59, 104, 58, 183),
-              Color.fromARGB(59, 33, 149, 243)
+              Color.fromARGB(59, 33, 149, 243),
             ],
           ),
         ),
-        width: pageWidth,
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: Form(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextFormField(
                   autofocus: true,
-                  decoration: inputDecoration,
+                  decoration: inputDecoration.copyWith(labelText: 'Title'),
                   style: const TextStyle(color: Colors.white),
                   onChanged: (inputTask) {
                     newTaskTitle = inputTask;
                   },
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextFormField(
+                  decoration: inputDecorationDescription.copyWith(
+                      labelText: 'Description'),
                   style: const TextStyle(color: Colors.white),
-                  decoration: inputDecorationDescription,
                   onChanged: (inputTask) {
                     newTaskDescription = inputTask;
                   },
                 ),
               ),
               const SizedBox(height: 30),
-              OutlinedButton(
+              ElevatedButton(
                 onPressed: () {
                   if (validateInputs(newTaskTitle, newTaskDescription)) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text("Title or descrption is Empty"),
+                        content: Text("Title or description is empty"),
+                        backgroundColor: Colors.red,
                       ),
                     );
                     return;
@@ -80,22 +81,28 @@ class AddTaskScreen extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text("Task Added"),
+                      backgroundColor: Colors.green,
                     ),
                   );
                 },
-                style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(
-                    Colors.deepPurpleAccent,
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.purpleAccent,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 15,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 child: const Text(
-                  'Add',
+                  'Add Task',
                   style: TextStyle(
                     color: Colors.white,
+                    fontSize: 16,
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
             ],
           ),
         ),

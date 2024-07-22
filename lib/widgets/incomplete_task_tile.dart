@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_cal/screens/task_detail_screen.dart';
 
-
 class IncompleteTaskTile extends StatelessWidget {
   const IncompleteTaskTile({
     super.key,
@@ -19,7 +18,7 @@ class IncompleteTaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color(0xffFF204E),
+      color: Colors.white,
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
@@ -40,7 +39,12 @@ class IncompleteTaskTile extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder : (context) =>TaskDetailScreen(taskTitle: taskTitle, taskDescription: taskDescription)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TaskDetailScreen(
+                              taskTitle: taskTitle,
+                              taskDescription: taskDescription)));
                 },
                 child: Text(
                   taskTitle,
