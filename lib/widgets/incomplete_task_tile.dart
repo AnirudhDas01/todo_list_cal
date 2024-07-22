@@ -18,9 +18,16 @@ class IncompleteTaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.red,
-      child: Theme(
-        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [
+              Color.fromARGB(101, 145, 57, 147),
+              Color.fromARGB(136, 84, 80, 216),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: ListTile(
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +41,7 @@ class IncompleteTaskTile extends StatelessWidget {
               Container(
                 height: 16,
                 width: 1,
-                color: Colors.white54,
+                color: Colors.white38,
                 margin: const EdgeInsets.symmetric(horizontal: 8),
               ),
               GestureDetector(
