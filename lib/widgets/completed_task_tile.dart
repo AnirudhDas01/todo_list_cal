@@ -16,22 +16,31 @@ class CompletedTaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.black,
-      child: ListTile(
-        title: Text(
-          completedTaskTitle,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 14,
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                Color.fromARGB(128, 120, 78, 204),
+                Color(0xFF3E187A),
+              ],
+            ),
+            borderRadius: BorderRadius.circular(12)),
+        child: ListTile(
+          title: Text(
+            completedTaskTitle,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+            ),
           ),
-        ),
-        trailing: Checkbox(
-          fillColor: WidgetStateProperty.resolveWith((state) {
-            return Colors.green;
-          }),
-          checkColor: Colors.black,
-          value: isDone,
-          onChanged: onChanged,
+          trailing: Checkbox(
+            fillColor: WidgetStateProperty.resolveWith((state) {
+              return Colors.green;
+            }),
+            checkColor: Colors.black,
+            value: isDone,
+            onChanged: onChanged,
+          ),
         ),
       ),
     );

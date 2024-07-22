@@ -22,7 +22,7 @@ class IncompleteTaskTile extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             colors: [
-              Color.fromARGB(101, 145, 57, 147),
+              Color.fromARGB(97, 102, 57, 147),
               Color.fromARGB(136, 84, 80, 216),
             ],
           ),
